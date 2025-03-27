@@ -44,7 +44,7 @@ Student_registration
 - Install Python(3.9) (Dont Forget to Tick Add to Path while installing Python)
 - Open Terminal and Execute Following Commands :
 ```
-python -venv env
+python -m venv env
 pip install -r requirements.txt
 pip install django
 ```
