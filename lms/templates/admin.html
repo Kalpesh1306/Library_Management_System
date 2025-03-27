@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+</head>
+<style>
+    body{
+     background-color: antiquewhite;
+    }
+
+    .form{
+        padding: 20px;
+        margin-left: 32%;
+        border: 2px solid black;
+        width: 30%;
+        margin-top: 7%;
+        height:30%;
+        background-color: rgb(179, 202, 195);
+    }
+    form{
+     margin-left: 50px;
+     }
+    h1{
+    margin-top: 5%;
+    margin-left: 20px;
+    padding:10px;
+    }
+    label,input{
+        margin: 5px;
+    }
+    button{
+       margin-left: 140px;
+        margin-top: 20px;
+    }
+    #city{
+        margin-left: 84px;
+    }
+    #email_id{
+        margin-left: 50px;
+    }
+     h3{
+        color:white;
+
+        }
+      #navbarNav{
+        margin-left: 5%;
+        font-size: 20px;
+        }
+        h4{
+        margin-top:40px;
+         margin-left: 2%;
+        }
+    p{
+    margin-left: 24%;
+    }
+
+</style>
+<body>
+ <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="container-fluid">
+    <h3>Library Management </h3>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+    </div>
+  </div>
+</nav>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: red;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+<div class="form">
+        <h1>Admin Registration</h1><br>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        <button type="submit">Register</button><br>
+    </form>
+    <p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+    </div>
+</body>
+</html>
+
+
+

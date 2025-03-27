@@ -1,0 +1,108 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Update Books</title>
+</head>
+<style>
+
+    form{
+        padding: 20px;
+        margin: 5px;
+        border: 2px solid black;
+        width: 30%;
+        margin-left: 32%;
+        margin-top: 2%;
+
+
+    }
+     h1{
+    margin-left: 36%;
+    margin-top: 2%;
+
+    }
+     #navbarNav{
+        margin-left: 5%;
+        font-size: 20px;
+        }
+        h4{
+        margin-top:40px;
+         margin-left: 2%;
+        }
+        h3{
+        color:white;
+
+        }
+    label,input{
+        margin: 5px;
+    }
+    button{
+       margin-left: 140px;
+        margin-top: 20px;
+    }
+    #city{
+        margin-left: 84px;
+    }
+    #email_id{
+        margin-left: 50px;
+    }
+</style>
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="container-fluid">
+    <h3>Library Management </h3>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <li class="nav-item">
+           <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+          <a class="nav-link active"   aria-current="page" href="{% url 'list_books' %}">List Of Books</a>
+        </li>
+        <li class="nav-item">
+           <a class="nav-link active" aria-current="page" href="{% url 'register_books' %}">+ Add Books</a>
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+</nav>
+    <h1>Update Books</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: green;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <form method="post" action="{% url 'uprecc' book.books_id   %}">
+        {% csrf_token %}
+         <label for="sname">Student Name :</label>
+        <input type="text" value="{{ book.sname }}" id="sname" name="books_id" required><br>
+        <label for="branch">Branch:</label>
+        <input type="text" value="{{ book.branch }}" id="branch" name="books_name" required><br>
+        <label for="books_id">Book ID :</label>
+        <input type="text" value="{{ book.books_id }}" id="books_id" name="books_id" required><br>
+        <label for="books_name">Book Name :</label>
+        <input type="text" value="{{ book.books_name }}" id="books_name" name="books_name" required><br>
+        <label for="author">Author :</label>
+        <input type="text" value="{{ book.author }}" id="author" name="author" required><br>
+         <label for="course_enrolled">Course Entrolled :</label>
+        <input type="text" value="{{ book.course_enrolled }}" id="course_enrolled" name="course_enrolled" required><br>
+         <label for="enrollment_date">Enrollment Date :</label>
+        <input type="date" value="{{ book.enrollment_date }}" id="enrollment_date" name="enrollment_date" required><br>
+        <label for="category">Category :</label>
+        <input type="text" value="{{ book.category }}" id="category" name="category" required><br>
+
+
+        <button type="submit">Update</button>
+    </form>
+
+</body>
+</html>
+

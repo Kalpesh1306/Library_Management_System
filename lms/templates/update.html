@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Update Students</title>
+</head>
+<style>
+
+    form{
+        padding: 20px;
+        margin: 5px;
+        border: 2px solid black;
+        width: 30%;
+        margin-left: 32%;
+        margin-top: 2%;
+
+
+    }
+     h1{
+    margin-left: 36%;
+    margin-top: 2%;
+
+    }
+     #navbarNav{
+        margin-left: 5%;
+        font-size: 20px;
+        }
+        h4{
+        margin-top:40px;
+         margin-left: 2%;
+        }
+        h3{
+        color:white;
+
+        }
+    label,input{
+        margin: 5px;
+    }
+    button{
+       margin-left: 140px;
+        margin-top: 20px;
+    }
+    #city{
+        margin-left: 84px;
+    }
+    #email_id{
+        margin-left: 50px;
+    }
+
+</style>
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="container-fluid">
+    <h3>Library Management </h3>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+          <li class="nav-item">
+           <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active"   aria-current="page" href="{% url 'list_student' %}">All Students</a>
+        </li>
+        <li class="nav-item">
+           <a class="nav-link active" aria-current="page" href="{% url 'register_student' %}">+ Add Students</a>
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+</nav>
+    <h1>Update Students</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: green;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <form method="post" action="{% url 'uprec' student.student_id   %}">
+        {% csrf_token %}
+        <label for="student_id">Student ID :</label>
+        <input type="text" value="{{ student.student_id }}" id="student_id" name="student_id" required><br>
+        <label for="student_name">Student Name :</label>
+        <input type="text" value="{{ student.student_name }}" id="student_name" name="student_name" required><br>
+        <label for="email_id">Email ID :</label>
+        <input type="email" value="{{ student.email_id }}" id="email_id" name="email_id" required><br>
+         <label for="contact_number">Contact Number :</label>
+        <input type="text" value="{{ student.contact_number }}" id="contact_number" name="contact_number" required><br>
+         <label for="date_of_birth">DOB :</label>
+        <input type="date" value="{{ student.date_of_birth }}" id="date_of_birth" name="date_of_birth" required><br>
+        <label for="city">City :</label>
+        <input type="text" value="{{ student.city }}" id="city" name="city" required><br>
+        <label for="course_enrolled">Course Enrolled :</label>
+        <input type="text"value="{{ student.course_enrolled }}" id="course_enrolled" name="course_enrolled" required><br>
+
+
+        <button type="submit">Update</button>
+    </form>
+
+</body>
+</html>
+
